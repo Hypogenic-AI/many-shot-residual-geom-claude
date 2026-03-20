@@ -1,0 +1,28 @@
+idea:
+  title: Many-Shot Residual Stream Geometry
+  domain: machine_learning
+  hypothesis: 'In many-shot learning, models tend to greatly narrow the distribution
+    of outputs in a clear way, likely resulting in a much simpler residual stream
+    geometry. By having models play extremely simple games (such as rock-paper-scissors,
+    tic-tac-toe, or poker), it may be possible to fully characterize how information
+    is scored in the residual stream directly.
+
+    '
+  background:
+    description: 'Given the fact that in many-shot learning models tend to greatly
+      narrow the distribution of the things they''re willing to do in a very clear
+      way, their residual stream geometry is probably much simpler. If we have models
+      play an extremely simple game, say rock-paper-scissors or tic-tac-toe, or even
+      something more complicated like poker, can we then fully characterize how that
+      information is being scored in the residual stream directly?
+
+      '
+  metadata:
+    author: Ari Holtzman
+    source: IdeaHub
+    source_url: https://hypogenic.ai/ideahub/idea/3TBBIkeF1QTD3K2S7aX3
+    idea_id: many_shot_residual_stream_geom_20260320_191137_0f65931c
+    created_at: '2026-03-20T19:11:37.582393'
+    status: submitted
+    github_repo_name: many-shot-residual-geom-claude
+    github_repo_url: https://github.com/Hypogenic-AI/many-shot-residual-geom-claude
