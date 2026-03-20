@@ -1,0 +1,24 @@
+\section{Introduction}
+\label{sec:intro}
+
+Transformers that process many in-context examples narrow their output distributions: with enough examples of a pattern, the model becomes more ``certain'' about what comes next. A natural question follows: {\bf does this distributional narrowing correspond to geometric simplification in the residual stream?} If so, residual stream geometry could serve as a mechanistic signature of in-context learning progress, with applications to interpretability, uncertainty quantification, and understanding the limits of context utilization.
+
+Recent work in mechanistic interpretability has established that transformers linearly encode belief state geometry in their residual streams~\cite{shai2024transformers}, and that game-playing models develop emergent world representations accessible via linear probes~\cite{nanda2023emergent, li2023emergent}. However, these studies analyze geometry at fixed context positions without tracking how it evolves as context grows. The many-shot regime---where models process tens or hundreds of in-context examples---remains geometrically uncharacterized.
+
+We address this gap by training small decoder-only transformers on sequences from games of varying complexity: a 3-state hidden Markov model (\messthree), Rock-Paper-Scissors with counter, random, and win-stay-lose-shift strategies, and \ttt. For each model, we extract residual stream activations at every context position and measure three geometric properties: effective dimensionality via participation ratio, PCA variance concentration, and linear probe accuracy for latent game states.
+
+Our main finding challenges the many-shot simplification hypothesis. Geometric simplification is not a universal consequence of processing more context. Instead, it tracks the \emph{effective entropy} of the data-generating process at each position:
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item \ttt shows dramatic dimensionality collapse ($\PR$: $7.85 \to 1.26$, Cohen's $d = 19.98$) because the game's state space shrinks as the board fills---a structural property of the task, not a learning phenomenon.
+    \item Stationary processes (\messthree, RPS) show approximately constant geometry across context ($\PR \approx 2.0$--$2.3$), stabilizing within the first ${\sim}5$ positions regardless of how much additional context is provided.
+    \item Belief state regression quality unexpectedly \emph{decreases} with context position in \messthree ($R^2$: $1.0 \to 0.95$, $p < 0.001$), revealing representational drift rather than progressive refinement.
+\end{itemize}
+
+\para{Contributions.} We make the following contributions:
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item We provide the first systematic measurement of residual stream geometry as a function of context position across multiple game-playing tasks, testing the many-shot geometric simplification hypothesis.
+    \item We demonstrate that effective dimensionality tracks task-level state-space entropy rather than context accumulation, with $\PR \approx 2$ emerging as a consistent floor for 3-token vocabularies---consistent with the belief state simplex being 2-dimensional.
+    \item We identify an unexpected belief state regression degradation with context position, suggesting that small transformers experience representational drift over long sequences.
+\end{itemize}
+
+The remainder of this paper is organized as follows. \Secref{sec:related} reviews related work on residual stream geometry and in-context learning. \Secref{sec:method} describes our experimental setup, including data generation, model architecture, and geometric metrics. \Secref{sec:results} presents our findings across all six datasets. \Secref{sec:discussion} interprets the results and discusses limitations. \Secref{sec:conclusion} summarizes our contributions and outlines future directions.

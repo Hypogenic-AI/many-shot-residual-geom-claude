@@ -1,0 +1,17 @@
+\section{Related Work}
+\label{sec:related}
+
+\para{Belief state geometry in transformers.}
+Shai et al.~\cite{shai2024transformers} established that transformers trained on next-token prediction linearly represent the geometry of Bayesian belief states in their residual streams. Working with hidden Markov models including the \messthree process, they showed that belief state simplices---including those with fractal structure---are faithfully embedded via affine maps $\vb \approx \mW \va + \vc$, where $\vb$ is the belief state and $\va$ is the residual stream activation. Piotrowski et al.~\cite{piotrowski2025constrained} extended this framework, showing that transformers implement ``constrained Bayesian belief updating'' through attention heads that perform scalar updates in orthogonal spectral modes. Both studies analyze geometry at fixed context lengths; we extend this line of work by measuring how geometry evolves across context positions.
+
+\para{World models in game-playing transformers.}
+Li et al.~\cite{li2023emergent} demonstrated that a GPT model trained on Othello move sequences develops an internal world model of the board state, recoverable via nonlinear probes. Nanda et al.~\cite{nanda2023emergent} refined this finding, showing that OthelloGPT encodes board state \emph{linearly} when the representation is relative to the current player (mine/yours/empty rather than black/white/empty). He et al.~\cite{he2024dictionary} applied sparse autoencoders to discover interpretable circuits in OthelloGPT without patch-based methods. These works establish that game-playing transformers develop structured internal representations, but do not track how representation geometry changes across the game.
+
+\para{In-context learning mechanisms.}
+Olsson et al.~\cite{olsson2022context} identified induction heads as a key mechanism for in-context learning, showing a phase transition during training where models acquire the ability to match and complete patterns from context. Garg et al.~\cite{garg2022can} showed that transformers can implicitly implement gradient descent on in-context examples for simple function classes. These works characterize \emph{how} in-context learning occurs but do not address the geometric consequences in the residual stream as context grows.
+
+\para{Geometric structure of representations.}
+Engels et al.~\cite{engels2024not} showed that some features in language models are represented as multi-dimensional subspaces rather than single directions, identifying ``irreducible'' multi-dimensional features. This is relevant to our work because belief states over $k$-state processes naturally inhabit $(k{-}1)$-dimensional simplices, making multi-dimensional representations theoretically necessary. Our participation ratio measurements directly quantify this effective dimensionality.
+
+\para{Position of our work.}
+We bridge the gap between belief state geometry studies (which analyze fixed-context representations) and in-context learning studies (which focus on mechanisms rather than geometry). By measuring geometric properties as a function of context position across games of varying complexity, we test whether many-shot learning produces measurable geometric simplification---and find that it does not, beyond what is explained by the task's intrinsic structure.

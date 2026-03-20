@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "stages": {
+    "resource_finder": {
+      "success": true,
+      "completion_marker": "/workspaces/many-shot-residual-geom-claude/.resource_finder_complete",
+      "outputs": {
+        "literature_review": "/workspaces/many-shot-residual-geom-claude/literature_review.md",
+        "resources_catalog": "/workspaces/many-shot-residual-geom-claude/resources.md",
+        "papers_dir": "/workspaces/many-shot-residual-geom-claude/papers",
+        "datasets_dir": "/workspaces/many-shot-residual-geom-claude/datasets",
+        "code_dir": "/workspaces/many-shot-residual-geom-claude/code"
+      },
+      "log_file": "/workspaces/many-shot-residual-geom-claude/logs/resource_finder_claude.log",
+      "transcript_file": "/workspaces/many-shot-residual-geom-claude/logs/resource_finder_claude_transcript.jsonl",
+      "elapsed_time": 1308.6781253814697
+    },
+    "experiment_runner": {
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 1734.1088826656342,
+      "log_file": "/workspaces/many-shot-residual-geom-claude/logs/execution_claude.log",
+      "transcript_file": "/workspaces/many-shot-residual-geom-claude/logs/execution_claude_transcript.jsonl"
+    }
+  },
+  "work_dir": "/workspaces/many-shot-residual-geom-claude"
+}

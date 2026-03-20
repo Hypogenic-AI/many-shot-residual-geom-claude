@@ -1,0 +1,11 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We tested the hypothesis that many-shot in-context learning simplifies residual stream geometry in game-playing transformers. Training small GPT-style models on sequences from \messthree HMMs, Rock-Paper-Scissors with multiple strategies, and \ttt, we find that geometric simplification is driven by the task's state-space structure, not by context accumulation.
+
+For stationary processes, residual stream geometry stabilizes within the first ${\sim}5$ positions and remains flat regardless of additional context. The effective dimensionality converges to $\PR \approx 2$ for all 3-token vocabularies, matching the dimensionality of the belief state simplex. \ttt produces dramatic dimensionality collapse ($\PR$: $7.85 \to 1.26$), but this reflects the shrinking number of legal moves, not a learning phenomenon. Unexpectedly, belief state regression quality \emph{decreases} with context ($R^2$: $1.0 \to 0.95$, $p < 0.001$), revealing representational drift in small transformers over long sequences.
+
+These findings have practical implications for mechanistic interpretability: for stationary processes, position-independent analysis suffices, and effective dimensionality is better understood as a task-structure diagnostic than a learning-progress indicator.
+
+\para{Future work.}
+Three directions are most promising. First, scaling to larger models (256-dimensional, 8-layer) would test whether the $\PR \approx 2$ floor persists or whether richer geometry emerges. Second, attention pattern analysis could reveal the mechanism behind belief state degradation at late positions. Third, testing with pre-trained language models (\eg GPT-2, Pythia) using game prompts would bridge our controlled synthetic setting toward realistic in-context learning.

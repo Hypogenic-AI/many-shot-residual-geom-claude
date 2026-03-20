@@ -1,0 +1,12 @@
+{
+  "d_model": 32,
+  "n_heads": 4,
+  "n_layers": 2,
+  "epochs": 100,
+  "lr": 0.0003,
+  "batch_size": 128,
+  "vocab_size": 10,
+  "max_seq_len": 9,
+  "param_count": 26400,
+  "best_val_loss": 1.2713263779878616
+}

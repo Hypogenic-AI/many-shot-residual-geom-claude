@@ -1,0 +1,58 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Geometric Simplification Reflects Task Structure}
+
+Our central finding is that residual stream geometry tracks the \emph{effective entropy of the data-generating process}, not the accumulation of in-context evidence. The strongest dimensionality reduction occurs in \ttt, where it is entirely explained by the shrinking number of legal moves as the board fills---a property of the game itself, not of the transformer's learning dynamics. For stationary processes (\messthree, RPS), the entropy at each position is constant by definition, and the geometry is correspondingly flat.
+
+This reframes the many-shot simplification hypothesis. Many-shot learning does narrow output distributions in settings where later positions are inherently more predictable (\eg games approaching their conclusion). But this narrowing is a property of the \emph{task}, not an emergent property of the transformer. There is no evidence that the transformer's internal geometry simplifies beyond what the task structure demands.
+
+\subsection{The $\PR \approx 2$ Floor}
+
+All models with 3-token vocabularies converge to $\PR \approx 2.0$, regardless of whether the model learned anything useful (\eg \rpsrandom achieves $\PR \approx 2$ despite zero learning signal). We interpret this as a consequence of the belief state simplex: for a 3-token vocabulary, the output distribution lives on a 2-simplex, so the model's residual stream naturally organizes around a 2-dimensional subspace. This is consistent with the theoretical predictions of Shai et al.~\cite{shai2024transformers}, who showed that residual streams linearly encode belief state geometry.
+
+The practical implication is that effective dimensionality is primarily determined by vocabulary size (or more precisely, the dimensionality of the output distribution's support), not by the amount of context or the complexity of the learned structure.
+
+\subsection{Belief State Degradation}
+
+The decrease in belief state regression quality with context position ($R^2$: $1.0 \to 0.95$ for \messthree with $p = 0.9$) is our most unexpected finding. We consider three possible explanations:
+
+\para{Positional embedding interference.}
+Learned positional embeddings add position-specific vectors to the residual stream. At later positions, these embeddings may interfere with the belief state representation, introducing position-dependent distortions that reduce the quality of a single linear probe trained across all positions.
+
+\para{Capacity limitations.}
+A 4-layer, 64-dimensional transformer attending over 128 tokens may face fundamental capacity constraints. The causal attention mechanism must attend to an increasingly long context, and the limited number of attention heads (4) may be insufficient to maintain high-fidelity belief tracking over the full sequence.
+
+\para{Shortcut learning.}
+The model may learn approximate heuristics (such as attending primarily to recent tokens) rather than implementing full Bayesian belief updating. Such shortcuts would produce accurate predictions at early positions (where the belief state is dominated by the most recent observation) but accumulate errors over longer contexts.
+
+Distinguishing these explanations requires further investigation, such as training models with different positional encoding schemes, varying the number of attention heads, or analyzing attention patterns directly.
+
+\subsection{Implications for Mechanistic Interpretability}
+
+\para{Position-independent analysis may suffice for stationary processes.}
+Since geometry is approximately constant across context positions for stationary processes, mechanistic interpretability analyses need not sweep over positions---a single representative position captures the full geometric structure.
+
+\para{Dimensionality is task-determined, not learning-determined.}
+The effective dimensionality of the residual stream is primarily set by the task's output distribution structure, not by the model's learning progress. This means participation ratio is a more useful diagnostic for task complexity than for model capability.
+
+\para{Small-model caveats.}
+Our models have 208K parameters and 64-dimensional residual streams. At this scale, architectural constraints dominate learned structure (\cf the random model comparison in \secref{sec:random_baseline}). Larger models with higher-dimensional residual streams may exhibit richer and more context-dependent geometry.
+
+\subsection{Limitations}
+\label{sec:limitations}
+
+\para{Model scale.}
+Our 64-dimensional, 4-layer models are deliberately small for tractability. The $\PR \approx 2$ floor may be an artifact of limited capacity rather than a fundamental property. Larger models could potentially develop higher-dimensional representations that do simplify with context.
+
+\para{Synthetic data.}
+All sequences are synthetically generated with known structure. Real game-playing settings (\eg language models playing chess from natural language descriptions) would involve more complex and less controlled dynamics.
+
+\para{No attention analysis.}
+We analyze only residual stream geometry, not attention patterns or individual head behaviors. Understanding the mechanisms behind the observed geometry requires complementary analyses of attention and MLP contributions.
+
+\para{Limited statistical power for \ttt.}
+With only 8 context positions, Spearman correlation for \ttt has low power ($p = 0.183$ despite $d = 19.98$). The massive effect size is unambiguous, but formal trend tests are underpowered.
+
+\para{Confound with positional embeddings.}
+Observed $\PR$ variations may partly reflect positional embedding geometry rather than learned content representations. Our random model baseline partially addresses this but cannot fully disentangle the two.

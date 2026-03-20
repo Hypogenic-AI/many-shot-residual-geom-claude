@@ -1,0 +1,33 @@
+# Ignore large data files
+*.pickle
+*.pkl
+*.npy
+*.npz
+*.pt
+*.pth
+*.h5
+*.hdf5
+*.csv
+*.tsv
+*.json
+*.jsonl
+*.parquet
+*.arrow
+*.feather
+*.zip
+*.tar
+*.tar.gz
+*.gz
+*.bz2
+
+# Ignore generated sample data (small samples are OK if explicitly tracked)
+# To track a specific small file: git add -f datasets/path/to/small_file.npy
+
+# Keep directory structure
+!.gitkeep
+!.gitignore
+
+# Keep Python generators and documentation
+!*.py
+!*.md
+!README.md

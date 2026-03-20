@@ -1,0 +1,77 @@
+\section{Methodology}
+\label{sec:method}
+
+\subsection{Data Generation}
+\label{sec:data}
+
+We generate synthetic sequences from six data sources spanning three game types with varying structural complexity. All datasets use fixed random seeds (42) for reproducibility.
+
+\para{\messthree hidden Markov model.}
+Following Shai et al.~\cite{shai2024transformers}, we generate sequences from a 3-state HMM with vocabulary $\{A, B, C\}$. Each hidden state $s_i$ emits its corresponding token with probability $p$ and each other token with probability $(1-p)/2$. We use two emission strengths: $p = 0.9$ (strong signal) and $p = 0.6$ (weak signal). State transitions follow a fixed stochastic matrix. We generate 10,000 sequences of length 128 for each setting.
+
+\para{Rock-Paper-Scissors (RPS).}
+We generate two-player RPS sequences with three opponent strategies. \rpscounter plays the move that beats the opponent's previous move. \rpsrandom plays uniformly at random. \rpswsls (win-stay-lose-shift) repeats its previous move after a win and switches after a loss. Each sequence contains 128 tokens encoding interleaved moves from both players (10,000 sequences per strategy).
+
+\para{\ttt.}
+We generate 10,000 games of random play on a $3 \times 3$ board. Moves are encoded as integers $0$--$8$ (board positions) with a separator token (9), yielding a vocabulary of size 10. Games are 9 tokens long (or fewer if terminated early), padded as needed.
+
+\Tabref{tab:datasets} summarizes the dataset characteristics.
+
+\begin{table}[t]
+\caption{Dataset summary. All datasets use 10,000 sequences with a 90/10 train/validation split.}
+\label{tab:datasets}
+\centering
+\begin{tabular}{@{}lcccl@{}}
+\toprule
+Dataset & Seq.\ Length & Vocab Size & Entropy & Structure \\
+\midrule
+\messthree ($p{=}0.9$) & 128 & 3 & $\log 3 = 1.10$ & Stationary HMM \\
+\messthree ($p{=}0.6$) & 128 & 3 & $\log 3 = 1.10$ & Stationary HMM \\
+\rpscounter & 128 & 3 & $\log 3 = 1.10$ & Deterministic strategy \\
+\rpsrandom & 128 & 3 & $\log 3 = 1.10$ & No learnable pattern \\
+\rpswsls & 128 & 3 & $\log 3 = 1.10$ & Conditional strategy \\
+\ttt & 9 & 10 & $\log 9 = 2.20$ & Shrinking state space \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Model Architecture}
+\label{sec:architecture}
+
+We train decoder-only GPT-style transformers with causal attention masks on next-token prediction (cross-entropy loss). For the 128-token datasets, we use $\dmodel = 64$, $\nheads = 4$, $\nlayers = 4$, yielding 208,640 parameters. For \ttt (9-token sequences), we use a smaller model: $\dmodel = 32$, $\nlayers = 2$, with 26,400 parameters. All models use learned positional embeddings, GELU activations, and dropout of 0.1.
+
+\para{Training.}
+We train with AdamW (learning rate $3 \times 10^{-4}$, weight decay 0.01) and cosine annealing over 60 epochs (100 for \ttt). We save the checkpoint with the lowest validation loss. Total training time is approximately 7 minutes across all six models on a single NVIDIA RTX A6000.
+
+\subsection{Geometric Metrics}
+\label{sec:metrics}
+
+We extract residual stream activations at each layer and context position using forward hooks, then compute three geometric metrics.
+
+\para{Participation ratio (PR).}
+The participation ratio measures the effective dimensionality of a set of activation vectors. Given the eigenvalues $\lambda_1, \ldots, \lambda_d$ of the covariance matrix of activations at a given position:
+\begin{equation}
+\label{eq:pr}
+\PR = \frac{\left(\sum_{i=1}^{d} \lambda_i\right)^2}{\sum_{i=1}^{d} \lambda_i^2}.
+\end{equation}
+$\PR = 1$ indicates all variance lies along a single direction; $\PR = d$ indicates uniform spread across all $d$ dimensions. We compute $\PR$ from the final-layer residual stream activations across all sequences at each context position.
+
+\para{PCA variance concentration.}
+We fit PCA to the activations at each position and measure the fraction of total variance explained by the top 3 principal components. Higher concentration indicates simpler geometry.
+
+\para{Linear probe accuracy.}
+For \messthree, we train ridge regression probes to predict the ground-truth belief state vector from residual stream activations, measuring $R^2$ as a function of context position. For RPS and \ttt, we train logistic regression classifiers to predict latent game state (current hidden state or next optimal move) and measure classification accuracy. All probes use 5-fold cross-validation.
+
+\subsection{Baselines and Controls}
+\label{sec:baselines}
+
+\para{Random model baseline.}
+We extract activations from an untrained (randomly initialized) model with identical architecture to distinguish learned geometric structure from architectural biases.
+
+\para{Entropy baseline.}
+We compare validation loss against the maximum-entropy baseline ($\log |\mathcal{V}|$, where $|\mathcal{V}|$ is the vocabulary size) to verify that each model has learned meaningful structure from the data.
+
+\subsection{Statistical Analysis}
+\label{sec:stats}
+
+We use Spearman rank correlation to test for monotonic trends in geometric metrics across context positions. We compare early-context (positions 0--9) and late-context (positions 118--127) metrics using two-sample $t$-tests with Cohen's $d$ for effect size. All reported $p$-values are two-sided.

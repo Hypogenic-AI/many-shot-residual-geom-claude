@@ -1,0 +1,209 @@
+[
+  {
+    "title": "Tracr: Compiled Transformers as a Laboratory for Interpretability",
+    "year": 2023,
+    "authors": "David Lindner, J'anos Kram'ar, Matthew Rahtz, Tom McGrath, Vladimir Mikulik",
+    "url": "https://api.semanticscholar.org/CorpusId:255749093",
+    "relevance": 3,
+    "abstract": "We show how to\\\"compile\\\"human-readable programs into standard decoder-only transformer models. Our compiler, Tracr, generates models with known structure. This structure can be used to design experiments. For example, we use it to study\\\"superposition\\\"in transformers that execute multi-step algorithms. Additionally, the known structure of Tracr-compiled models can serve as ground-truth for evaluating interpretability methods. Commonly, because the\\\"programs\\\"learned by transformers are unknown it is unclear whether an interpretation succeeded. We demonstrate our approach by implementing and examining programs including computing token frequencies, sorting, and parenthesis checking. We provide an open-source implementation of Tracr at https://github.com/deepmind/tracr.",
+    "citations": 91
+  },
+  {
+    "title": "Emergent Linear Representations in World Models of Self-Supervised Sequence Models",
+    "year": 2023,
+    "authors": "Neel Nanda, Andrew Lee, Martin Wattenberg",
+    "url": "https://api.semanticscholar.org/CorpusId:261530966",
+    "relevance": 3,
+    "abstract": "How do sequence models represent their decision-making process? Prior work suggests that Othello-playing neural network learned nonlinear models of the board state (Li et al., 2023a). In this work, we provide evidence of a closely related linear representation of the board. In particular, we show that probing for \\u201cmy colour\\u201d vs. \\u201copponent\\u2019s colour\\u201d may be a simple yet powerful way to interpret the model\\u2019s internal state. This precise understanding of the internal representations allows us to control the model\\u2019s behaviour with simple vector arithmetic. Linear representations enable significant interpretability progress, which we demonstrate with further exploration of how the world model is computed.",
+    "citations": 290
+  },
+  {
+    "title": "Transformer Dynamics: A neuroscientific approach to interpretability of large language models",
+    "year": 2025,
+    "authors": "Jesseba Fernando, Grigori Guitchounts",
+    "url": "https://www.semanticscholar.org/paper/232754205870686e1fd566ec79bc0143e003c960",
+    "relevance": 3,
+    "abstract": "As artificial intelligence models have exploded in scale and capability, understanding of their internal mechanisms remains a critical challenge. Inspired by the success of dynamical systems approaches in neuroscience, here we propose a novel framework for studying computations in deep learning systems. We focus on the residual stream (RS) in transformer models, conceptualizing it as a dynamical system evolving across layers. We find that activations of individual RS units exhibit strong continuity across layers, despite the RS being a non-privileged basis. Activations in the RS accelerate and grow denser over layers, while individual units trace unstable periodic orbits. In reduced-dimensional spaces, the RS follows a curved trajectory with attractor-like dynamics in the lower layers. These insights bridge dynamical systems theory and mechanistic interpretability, establishing a foundation for a\\\"neuroscience of AI\\\"that combines theoretical rigor with large-scale data analysis to advance our understanding of modern neural networks.",
+    "citations": 6
+  },
+  {
+    "title": "Constrained belief updates explain geometric structures in transformer representations",
+    "year": 2025,
+    "authors": "Mateusz Piotrowski, P. Riechers, Daniel Filan, A. Shai",
+    "url": "https://www.semanticscholar.org/paper/decab8df62433e06a202da0d85761e78dae1d4c8",
+    "relevance": 3,
+    "abstract": "What computational structures emerge in transformers trained on next-token prediction? In this work, we provide evidence that transformers implement constrained Bayesian belief updating -- a parallelized version of partial Bayesian inference shaped by architectural constraints. We integrate the model-agnostic theory of optimal prediction with mechanistic interpretability to analyze transformers trained on a tractable family of hidden Markov models that generate rich geometric patterns in neural activations. Our primary analysis focuses on single-layer transformers, revealing how the first attention layer implements these constrained updates, with extensions to multi-layer architectures demonstrating how subsequent layers refine these representations. We find that attention carries out an algorithm with a natural interpretation in the probability simplex, and create representations with distinctive geometric structure. We show how both the algorithmic behavior and the underlying geometry of these representations can be theoretically predicted in detail -- including the attention pattern, OV-vectors, and embedding vectors -- by modifying the equations for optimal future token predictions to account for the architectural constraints of attention. Our approach provides a principled lens on how architectural constraints shape the implementation of optimal prediction, revealing why transformers develop specific intermediate geometric structures.",
+    "citations": 7
+  },
+  {
+    "title": "Curved Inference: Concern-Sensitive Geometry in Large Language Model Residual Streams",
+    "year": 2025,
+    "authors": "Rob Manson",
+    "url": "https://www.semanticscholar.org/paper/ffbe2e8e0ac977cd372fd0690038873c9ff4c483",
+    "relevance": 3,
+    "abstract": "We propose Curved Inference - a geometric Interpretability framework that tracks how the residual stream trajectory of a large language model bends in response to shifts in semantic concern. Across 20 matched prompts spanning emotional, moral, perspective, logical, identity, environmental, and nonsense domains, we analyse Gemma3-1b and LLaMA3.2-3b using five native-space metrics, with a primary focus on curvature (\\\\k{appa}_i) and salience (S(t)). These metrics are computed under a pullback semantic metric derived from the unembedding matrix, ensuring that all measurements reflect token-aligned geometry rather than raw coordinate structure. We find that concern-shifted prompts reliably alter internal activation trajectories in both models - with LLaMA exhibiting consistent, statistically significant scaling in both curvature and salience as concern intensity increases. Gemma also responds to concern but shows weaker differentiation between moderate and strong variants. Our results support a two-layer view of LLM geometry - a latent conceptual structure encoded in the embedding space, and a contextual trajectory shaped by prompt-specific inference. Curved Inference reveals how models navigate, reorient, or reinforce semantic meaning over depth, offering a principled method for diagnosing alignment, abstraction, and emergent inference dynamics. These findings offer fresh insight into semantic abstraction and model alignment through the lens of Curved Inference.",
+    "citations": 4
+  },
+  {
+    "title": "Residual Stream Analysis with Multi-Layer SAEs",
+    "year": 2024,
+    "authors": "Tim Lawson, Lucy Farnik, Conor Houghton, Laurence Aitchison",
+    "url": "https://www.semanticscholar.org/paper/f2edde8b5c985c0c7ad57e49fc2eae8c4e58d163",
+    "relevance": 3,
+    "abstract": "Sparse autoencoders (SAEs) are a promising approach to interpreting the internal representations of transformer language models. However, SAEs are usually trained separately on each transformer layer, making it difficult to use them to study how information flows across layers. To solve this problem, we introduce the multi-layer SAE (MLSAE): a single SAE trained on the residual stream activation vectors from every transformer layer. Given that the residual stream is understood to preserve information across layers, we expected MLSAE latents to 'switch on' at a token position and remain active at later layers. Interestingly, we find that individual latents are often active at a single layer for a given token or prompt, but the layer at which an individual latent is active may differ for different tokens or prompts. We quantify these phenomena by defining a distribution over layers and considering its variance. We find that the variance of the distributions of latent activations over layers is about two orders of magnitude greater when aggregating over tokens compared with a single token. For larger underlying models, the degree to which latents are active at multiple layers increases, which is consistent with the fact that the residual stream activation vectors at adjacent layers become more similar. Finally, we relax the assumption that the residual stream basis is the same at every layer by applying pre-trained tuned-lens transformations, but our findings remain qualitatively similar. Our results represent a new approach to understanding how representations change as they flow through transformers. We release our code to train and analyze MLSAEs at https://github.com/tim-lawson/mlsae.",
+    "citations": 12
+  },
+  {
+    "title": "Clustering in pure-attention hardmax transformers and its role in sentiment analysis",
+    "year": 2024,
+    "authors": "A. Alcalde, Giovanni Fantuzzi, Enrique Zuazua",
+    "url": "https://api.semanticscholar.org/CorpusId:270878328",
+    "relevance": 3,
+    "abstract": "Transformers are extremely successful machine learning models whose mathematical properties remain poorly understood. Here, we rigorously characterize the behavior of transformers with hardmax self-attention and normalization sublayers as the number of layers tends to infinity. By viewing such transformers as discrete-time dynamical systems describing the evolution of points in a Euclidean space, and thanks to a geometric interpretation of the self-attention mechanism based on hyperplane separation, we show that the transformer inputs asymptotically converge to a clustered equilibrium determined by special points called leaders. We then leverage this theoretical understanding to solve sentiment analysis problems from language processing using a fully interpretable transformer model, which effectively captures `context'by clustering meaningless words around leader words carrying the most meaning. Finally, we outline remaining challenges to bridge the gap between the mathematical analysis of transformers and their real-life implementation.",
+    "citations": 12
+  },
+  {
+    "title": "The Bayesian Geometry of Transformer Attention",
+    "year": 2025,
+    "authors": "Naman Aggarwal, Siddhartha R. Dalal, Vishal Misra",
+    "url": "https://www.semanticscholar.org/paper/586d50f979369133c356459dc90c4375e9988863",
+    "relevance": 3,
+    "abstract": "Transformers often appear to perform Bayesian reasoning in context, but verifying this rigorously has been impossible: natural data lack analytic posteriors, and large models conflate reasoning with memorization. We address this by constructing \\\\emph{Bayesian wind tunnels} -- controlled environments where the true posterior is known in closed form and memorization is provably impossible. In these settings, small transformers reproduce Bayesian posteriors with $10^{-3}$-$10^{-4}$ bit accuracy, while capacity-matched MLPs fail by orders of magnitude, establishing a clear architectural separation. Across two tasks -- bijection elimination and Hidden Markov Model (HMM) state tracking -- we find that transformers implement Bayesian inference through a consistent geometric mechanism: residual streams serve as the belief substrate, feed-forward networks perform the posterior update, and attention provides content-addressable routing. Geometric diagnostics reveal orthogonal key bases, progressive query-key alignment, and a low-dimensional value manifold parameterized by posterior entropy. During training this manifold unfurls while attention patterns remain stable, a \\\\emph{frame-precision dissociation} predicted by recent gradient analyses. Taken together, these results demonstrate that hierarchical attention realizes Bayesian inference by geometric design, explaining both the necessity of attention and the failure of flat architectures. Bayesian wind tunnels provide a foundation for mechanistically connecting small, verifiable systems to reasoning phenomena observed in large language models.",
+    "citations": 6
+  },
+  {
+    "title": "Not All Language Model Features Are One-Dimensionally Linear",
+    "year": 2024,
+    "authors": "Joshua Engels, Isaac Liao, Eric J. Michaud, Wes Gurnee, Max Tegmark",
+    "url": "https://www.semanticscholar.org/paper/24ae90b670d83d092bb966dc1d145e69a18d99d8",
+    "relevance": 3,
+    "abstract": "Recent work has proposed that language models perform computation by manipulating one-dimensional representations of concepts (\\\"features\\\") in activation space. In contrast, we explore whether some language model representations may be inherently multi-dimensional. We begin by developing a rigorous definition of irreducible multi-dimensional features based on whether they can be decomposed into either independent or non-co-occurring lower-dimensional features. Motivated by these definitions, we design a scalable method that uses sparse autoencoders to automatically find multi-dimensional features in GPT-2 and Mistral 7B. These auto-discovered features include strikingly interpretable examples, e.g. circular features representing days of the week and months of the year. We identify tasks where these exact circles are used to solve computational problems involving modular arithmetic in days of the week and months of the year. Next, we provide evidence that these circular features are indeed the fundamental unit of computation in these tasks with intervention experiments on Mistral 7B and Llama 3 8B, and we examine the continuity of the days of the week feature in Mistral 7B. Overall, our work argues that understanding multi-dimensional features is necessary to mechanistically decompose some model behaviors.",
+    "citations": 111
+  },
+  {
+    "title": "Transformers learn factored representations",
+    "year": 2026,
+    "authors": "A. Shai, Loren Amdahl-Culleton, Casper L. Christensen, Henry R. Bigelow, F. Rosas, Alexander B. Boyd, Eric A. Alt, Kyle J. Ray, P. Riechers",
+    "url": "https://www.semanticscholar.org/paper/292f19d65531b8cfd565ff938f17f61aea629a60",
+    "relevance": 3,
+    "abstract": "Transformers pretrained via next token prediction learn to factor their world into parts, representing these factors in orthogonal subspaces of the residual stream. We formalize two representational hypotheses: (1) a representation in the product space of all factors, whose dimension grows exponentially with the number of parts, or (2) a factored representation in orthogonal subspaces, whose dimension grows linearly. The factored representation is lossless when factors are conditionally independent, but sacrifices predictive fidelity otherwise, creating a tradeoff between dimensional efficiency and accuracy. We derive precise predictions about the geometric structure of activations for each, including the number of subspaces, their dimensionality, and the arrangement of context embeddings within them. We test between these hypotheses on transformers trained on synthetic processes with known latent structure. Models learn factored representations when factors are conditionally independent, and continue to favor them early in training even when noise or hidden dependencies undermine conditional independence, reflecting an inductive bias toward factoring at the cost of fidelity. This provides a principled explanation for why transformers decompose the world into parts, and suggests that interpretable low dimensional structure may persist even in models trained on complex data.",
+    "citations": 0
+  },
+  {
+    "title": "Circuit Fingerprints: How Answer Tokens Encode Their Geometrical Path",
+    "year": 2026,
+    "authors": "Andres Saurez, Neha Sengar, Dong-Soo Har",
+    "url": "https://www.semanticscholar.org/paper/b861550c4fe3db6bf6f35f50a33ae0ef3173c265",
+    "relevance": 3,
+    "abstract": "Circuit discovery and activation steering in transformers have developed as separate research threads, yet both operate on the same representational space. Are they two views of the same underlying structure? We show they follow a single geometric principle: answer tokens, processed in isolation, encode the directions that would produce them. This Circuit Fingerprint hypothesis enables circuit discovery without gradients or causal intervention -- recovering comparable structure to gradient-based methods through geometric alignment alone. We validate this on standard benchmarks (IOI, SVA, MCQA) across four model families, achieving circuit discovery performance comparable to gradient-based methods. The same directions that identify circuit components also enable controlled steering -- achieving 69.8\\\\% emotion classification accuracy versus 53.1\\\\% for instruction prompting while preserving factual accuracy. Beyond method development, this read-write duality reveals that transformer circuits are fundamentally geometric structures: interpretability and controllability are two facets of the same object.",
+    "citations": 0
+  },
+  {
+    "title": "On the Emergence of Induction Heads for In-Context Learning",
+    "year": 2025,
+    "authors": "Tiberiu Musat, Tiago Pimentel, Lorenzo Noci, Alessandro Stolfo, Mrinmaya Sachan, Thomas Hofmann",
+    "url": "https://api.semanticscholar.org/CorpusId:282739208",
+    "relevance": 3,
+    "abstract": "Transformers have become the dominant architecture for natural language processing. Part of their success is owed to a remarkable capability known as in-context learning (ICL): they can acquire and apply novel associations solely from their input context, without any updates to their weights. In this work, we study the emergence of induction heads, a previously identified mechanism in two-layer transformers that is particularly important for in-context learning. We uncover a relatively simple and interpretable structure of the weight matrices implementing the induction head. We theoretically explain the origin of this structure using a minimal ICL task formulation and a modified transformer architecture. We give a formal proof that the training dynamics remain constrained to a 19-dimensional subspace of the parameter space. Empirically, we validate this constraint while observing that only 3 dimensions account for the emergence of an induction head. By further studying the training dynamics inside this 3-dimensional subspace, we find that the time until the emergence of an induction head follows a tight asymptotic bound that is quadratic in the input context length.",
+    "citations": 1
+  },
+  {
+    "title": "Why Linear Interpretability Works: Invariant Subspaces as a Result of Architectural Constraints",
+    "year": 2026,
+    "authors": "Andres Saurez, Yousun Lee, Dong-Soo Har",
+    "url": "https://api.semanticscholar.org/CorpusId:285462679",
+    "relevance": 3,
+    "abstract": "Linear probes and sparse autoencoders consistently recover meaningful structure from transformer representations -- yet why should such simple methods succeed in deep, nonlinear systems? We show this is not merely an empirical regularity but a consequence of architectural necessity: transformers communicate information through linear interfaces (attention OV circuits, unembedding matrices), and any semantic feature decoded through such an interface must occupy a context-invariant linear subspace. We formalize this as the \\\\emph{Invariant Subspace Necessity} theorem and derive the \\\\emph{Self-Reference Property}: tokens directly provide the geometric direction for their associated features, enabling zero-shot identification of semantic structure without labeled data or learned probes. Empirical validation in eight classification tasks and four model families confirms the alignment between class tokens and semantically related instances. Our framework provides \\\\textbf{a principled architectural explanation} for why linear interpretability methods work, unifying linear probes and sparse autoencoders.",
+    "citations": 0
+  },
+  {
+    "title": "The Geometry of Thought: How Scale Restructures Reasoning In Large Language Models",
+    "year": 2026,
+    "authors": "S. Anderson",
+    "url": "https://api.semanticscholar.org/CorpusId:284911112",
+    "relevance": 3,
+    "abstract": "Scale does not uniformly improve reasoning - it restructures it. Analyzing 25,000+ chain-of-thought trajectories across four domains (Law, Science, Code, Math) and two scales (8B, 70B parameters), we discover that neural scaling laws trigger domain-specific phase transitions rather than uniform capability gains. Legal reasoning undergoes Crystallization: 45% collapse in representational dimensionality (d95: 501 ->274), 31% increase in trajectory alignment, and 10x manifold untangling. Scientific and mathematical reasoning remain Liquid - geometrically invariant despite 9x parameter increase. Code reasoning forms a discrete Lattice of strategic modes (silhouette: 0.13 ->0.42). This geometry predicts learnability. We introduce Neural Reasoning Operators - learned mappings from initial to terminal hidden states. In crystalline legal reasoning, our operator achieves 63.6% accuracy on held-out tasks via probe decoding, predicting reasoning endpoints without traversing intermediate states. We further identify a universal oscillatory signature (coherence ~ -0.4) invariant across domains and scales, suggesting attention and feedforward layers drive reasoning through opposing dynamics. These findings establish that the cost of thought is determined not by task difficulty but by manifold geometry - offering a blueprint for inference acceleration where topology permits.",
+    "citations": 0
+  },
+  {
+    "title": "Is This the Subspace You Are Looking for? An Interpretability Illusion for Subspace Activation Patching",
+    "year": 2023,
+    "authors": "Aleksandar Makelov, Georg Lange, Neel Nanda",
+    "url": "https://www.semanticscholar.org/paper/61393e6ad8262f2fbf1ef980608c3deae5fb1afd",
+    "relevance": 3,
+    "abstract": "Mechanistic interpretability aims to understand model behaviors in terms of specific, interpretable features, often hypothesized to manifest as low-dimensional subspaces of activations. Specifically, recent studies have explored subspace interventions (such as activation patching) as a way to simultaneously manipulate model behavior and attribute the features behind it to given subspaces. In this work, we demonstrate that these two aims diverge, potentially leading to an illusory sense of interpretability. Counterintuitively, even if a subspace intervention makes the model's output behave as if the value of a feature was changed, this effect may be achieved by activating a dormant parallel pathway leveraging another subspace that is causally disconnected from model outputs. We demonstrate this phenomenon in a distilled mathematical example, in two real-world domains (the indirect object identification task and factual recall), and present evidence for its prevalence in practice. In the context of factual recall, we further show a link to rank-1 fact editing, providing a mechanistic explanation for previous work observing an inconsistency between fact editing performance and fact localization. However, this does not imply that activation patching of subspaces is intrinsically unfit for interpretability. To contextualize our findings, we also show what a success case looks like in a task (indirect object identification) where prior manual circuit analysis informs an understanding of the location of a feature. We explore the additional evidence needed to argue that a patched subspace is faithful.",
+    "citations": 45
+  },
+  {
+    "title": "Talking Heads: Understanding Inter-layer Communication in Transformer Language Models",
+    "year": 2024,
+    "authors": "Jack Merullo, Carsten Eickhoff, Ellie Pavlick",
+    "url": "https://www.semanticscholar.org/paper/5062d21a91b60d432b5d1264619fa26243e0e352",
+    "relevance": 3,
+    "abstract": "Although it is known that transformer language models (LMs) pass features from early layers to later layers, it is not well understood how this information is represented and routed by the model. We analyze a mechanism used in two LMs to selectively inhibit items in a context in one task, and find that it underlies a commonly used abstraction across many context-retrieval behaviors. Specifically, we find that models write into low-rank subspaces of the residual stream to represent features which are then read out by later layers, forming low-rank communication channels (Elhage et al., 2021) between layers. A particular 3D subspace in model activations in GPT-2 can be traversed to positionally index items in lists, and we show that this mechanism can explain an otherwise arbitrary-seeming sensitivity of the model to the order of items in the prompt. That is, the model has trouble copying the correct information from context when many items ``crowd\\\"this limited space. By decomposing attention heads with the Singular Value Decomposition (SVD), we find that previously described interactions between heads separated by one or more layers can be predicted via analysis of their weight matrices alone. We show that it is possible to manipulate the internal model representations as well as edit model weights based on the mechanism we discover in order to significantly improve performance on our synthetic Laundry List task, which requires recall from a list, often improving task accuracy by over 20%. Our analysis reveals a surprisingly intricate interpretable structure learned from language model pretraining, and helps us understand why sophisticated LMs sometimes fail in simple domains, facilitating future analysis of more complex behaviors.",
+    "citations": 39
+  },
+  {
+    "title": "Dictionary Learning Improves Patch-Free Circuit Discovery in Mechanistic Interpretability: A Case Study on Othello-GPT",
+    "year": 2024,
+    "authors": "Zhengfu He, Xuyang Ge, Qiong Tang, Tianxiang Sun, Qinyuan Cheng, Xipeng Qiu",
+    "url": "https://www.semanticscholar.org/paper/1301ed763095097ff424c668e16a265b3ae2f231",
+    "relevance": 3,
+    "abstract": "Sparse dictionary learning has been a rapidly growing technique in mechanistic interpretability to attack superposition and extract more human-understandable features from model activations. We ask a further question based on the extracted more monosemantic features: How do we recognize circuits connecting the enormous amount of dictionary features? We propose a circuit discovery framework alternative to activation patching. Our framework suffers less from out-of-distribution and proves to be more efficient in terms of asymptotic complexity. The basic unit in our framework is dictionary features decomposed from all modules writing to the residual stream, including embedding, attention output and MLP output. Starting from any logit, dictionary feature or attention score, we manage to trace down to lower-level dictionary features of all tokens and compute their contribution to these more interpretable and local model behaviors. We dig in a small transformer trained on a synthetic task named Othello and find a number of human-understandable fine-grained circuits inside of it.",
+    "citations": 25
+  },
+  {
+    "title": "Curved Inference: A Guide to Geometric Interpretability",
+    "year": 2026,
+    "authors": "Rob Manson",
+    "url": "https://www.semanticscholar.org/paper/a76febbd4632667769ec6461cdf1e2a88de8a77e",
+    "relevance": 3,
+    "abstract": "This paper introduces a unified framework for analyzing the internal geometry of inference in transformer-based language models. Building on a series of prior studies, we present a consolidated introduction to \\u201cCurved Inference\\u201d: a methodology that measures how token representations evolve in the residual stream as geometric trajectories. Using metrics such as curvature, salience, and semantic surface area, we show that residual trajectories reflect meaningful semantic structure, and are empirically associated with emotional and moral concern, covert intent in sleeper agents, and computational self-modeling dynamics. We consolidate these findings into a reproducible, falsifiable pipeline, supported by formal mathematical definitions and open-source tools. This geometric approach shifts the focus of interpretability from static attribution to dynamic, modelnative inference analysis. The results provide evidence that residual stream geometry is not only measurable, but also structurally related to complex behaviors in the models we study. We invite researchers to replicate, extend, or falsify these claims and test the boundaries of curved inference as a new paradigm for model understanding.\\n\\u00a0\\nReceived: 6 August 2025 | Revised: 12 January 2026 | Accepted: 21 January 2026\\n\\u00a0\\nConflicts of Interest\\nThe author declares that he has no conflicts of interest to this work.\\n\\u00a0\\nData Availability Statement\\nThe data that support the findings of this study are openly available in GitHub at\\u00a0\\n\\nhttps://github.com/robman/FRESH-model/tree/main/\\u00a0benchmarks/curved-inference.\\n\\n\\u00a0\\nAuthor Contribution Statement\\nRob Manson: Conceptualization, Methodology, Software, Validation, Formal analysis, Investigation, Resources, Data curation, Writing \\u2013 original draft, Writing \\u2013 review & editing, Visualization, Supervision, Project administration.",
+    "citations": 0
+  },
+  {
+    "title": "The geometry of BERT",
+    "year": 2025,
+    "authors": "Matteo Bonino, Giorgia Ghione, G. Cirrincione",
+    "url": "https://www.semanticscholar.org/paper/450e9c0ec90bc7e5f1726884e679023baed91a80",
+    "relevance": 3,
+    "abstract": "Transformer neural networks, particularly Bidirectional Encoder Representations from Transformers (BERT), have shown remarkable performance across various tasks such as classification, text summarization, and question answering. However, their internal mechanisms remain mathematically obscure, highlighting the need for greater explainability and interpretability. In this direction, this paper investigates the internal mechanisms of BERT proposing a novel perspective on the attention mechanism of BERT from a theoretical perspective. The analysis encompasses both local and global network behavior. At the local level, the concept of directionality of subspace selection as well as a comprehensive study of the patterns emerging from the self-attention matrix are presented. Additionally, this work explores the semantic content of the information stream through data distribution analysis and global statistical measures including the novel concept of cone index. A case study on the classification of SARS-CoV-2 variants using RNA which resulted in a very high accuracy has been selected in order to observe these concepts in an application. The insights gained from this analysis contribute to a deeper understanding of BERT's classification process, offering potential avenues for future architectural improvements in Transformer models and further analysis in the training process.",
+    "citations": 2
+  },
+  {
+    "title": "Geometric Scaling of Bayesian Inference in LLMs",
+    "year": 2025,
+    "authors": "Naman Aggarwal, Siddhartha R. Dalal, Vishal Misra",
+    "url": "https://www.semanticscholar.org/paper/1350c370a1362c5ce1ddfbb9177dab2bd562dcab",
+    "relevance": 3,
+    "abstract": "Recent work has shown that small transformers trained in controlled\\\"wind-tunnel''settings can implement exact Bayesian inference, and that their training dynamics produce a geometric substrate -- low-dimensional value manifolds and progressively orthogonal keys -- that encodes posterior structure. We investigate whether this geometric signature persists in production-grade language models. Across Pythia, Phi-2, Llama-3, and Mistral families, we find that last-layer value representations organize along a single dominant axis whose position strongly correlates with predictive entropy, and that domain-restricted prompts collapse this structure into the same low-dimensional manifolds observed in synthetic settings. To probe the role of this geometry, we perform targeted interventions on the entropy-aligned axis of Pythia-410M during in-context learning. Removing or perturbing this axis selectively disrupts the local uncertainty geometry, whereas matched random-axis interventions leave it intact. However, these single-layer manipulations do not produce proportionally specific degradation in Bayesian-like behavior, indicating that the geometry is a privileged readout of uncertainty rather than a singular computational bottleneck. Taken together, our results show that modern language models preserve the geometric substrate that enables Bayesian inference in wind tunnels, and organize their approximate Bayesian updates along this substrate.",
+    "citations": 1
+  },
+  {
+    "title": "Attention as Binding: A Vector-Symbolic Perspective on Transformer Reasoning",
+    "year": 2025,
+    "authors": "Sahil Rajesh Dhayalkar",
+    "url": "https://www.semanticscholar.org/paper/ca28a3d1d3d17842b925b5da7b5247645917ddff",
+    "relevance": 3,
+    "abstract": "Transformer-based language models display impressive reasoning-like behavior, yet remain brittle on tasks that require stable symbolic manipulation. This paper develops a unified perspective on these phenomena by interpreting self-attention and residual streams as implementing an approximate Vector Symbolic Architecture (VSA). In this view, queries and keys define role spaces, values encode fillers, attention weights perform soft unbinding, and residual connections realize superposition of many bound structures. We use this algebraic lens to relate transformer internals to chain-of-thought traces, program-based reasoning, and memory-augmented tool use, and to explain characteristic failure modes such as variable confusion and inconsistency across logically related prompts. Building on this perspective, we propose VSA-inspired architectural biases, including explicit binding/unbinding heads and hyperdimensional memory layers, and training objectives that promote role-filler separation and robust superposition. Finally, we outline metrics for measuring\\\"VSA-likeness\\\"and logical compositionality, and pose theoretical and architectural open problems. Overall, the paper argues that viewing attention as soft vector-symbolic computation offers a principled route toward more interpretable and logically reliable reasoning systems.",
+    "citations": 0
+  },
+  {
+    "title": "Geometry, topology and mechanistic interpretability of large scale AI models",
+    "year": 2025,
+    "authors": "Alessio Ansuini, Lorenzo Basile, F. Bazzocchi, Matteo Biagetti, Alberto Cazzaniga, Stefano Cozzini, F. Cuturello, Diego Doimo, Yuri Gardinazzi, Ruggero Lot, Francesco Ortu, Emanuele Panizon, Valerio Piomponi, Tommaso Rodani, Alessandro Serra, Niccolo Tosato, L. Valeriani",
+    "url": "https://www.semanticscholar.org/paper/3b55ca79d2d2ac9457aa28930fe1cd768bdfca34",
+    "relevance": 3,
+    "abstract": "",
+    "citations": 0
+  },
+  {
+    "title": "Transformers represent belief state geometry in their residual stream",
+    "year": 2024,
+    "authors": "A. Shai, Sarah E. Marzen, Lucas Teixeira, Alexander Gietelink Oldenziel, P. Riechers",
+    "url": "https://www.semanticscholar.org/paper/f481cf18598b8e4c069e6aced38b71b654db5dc3",
+    "relevance": 2,
+    "abstract": "What computational structure are we building into large language models when we train them on next-token prediction? Here, we present evidence that this structure is given by the meta-dynamics of belief updating over hidden states of the data-generating process. Leveraging the theory of optimal prediction, we anticipate and then find that belief states are linearly represented in the residual stream of transformers, even in cases where the predicted belief state geometry has highly nontrivial fractal structure. We investigate cases where the belief state geometry is represented in the final residual stream or distributed across the residual streams of multiple layers, providing a framework to explain these observations. Furthermore we demonstrate that the inferred belief states contain information about the entire future, beyond the local next-token prediction that the transformers are explicitly trained on. Our work provides a general framework connecting the structure of training data to the geometric structure of activations inside transformers.",
+    "citations": 40
+  }
+]
